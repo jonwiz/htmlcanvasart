@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML5 Canvas</title>
+		<style type="text/css">
+			body {margin: 0; padding: 0; background: #000;}
+			.layer {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				border: 2px solid #000;
+			}
+			h1 {
+				background: black;
+				color: white;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 2;
+			}
+		</style>
+		<script type="text/javascript">
+		sets = 0;
+
+
+		function drawLayers() {
+			draw('layer1')
+
+		}
+		function draw(id) {
+			var canvas = document.getElementById(id);
+			fib = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610];
+			gutter = 13;
+			if (canvas.getContext) {
+				var ctx = canvas.getContext('2d');
+				ctx.fillStyle = 'rgba(255,0,255,0.5)'
+				for(i = 0; i < fib.length; i++){
+					ctx.fillRect(fib[i], fib[i], fib[i], fib[i]);
+				}
+
+				
+
+				for(i = 0; i < fib.length - 1; i++){
+					ctx.fillRect(1800 - (fib[i] * 2), fib[i], fib[i], fib[i]);
+				}
+
+
+
+				ctx.fillStyle = 'rgba(0,255,255,0.5)'
+				for(i = 0; i < fib.length - 1; i++){
+					ctx.fillRect(900 - (fib[i] / 2), fib[i] * 2, fib[i], fib[i]);
+				}
+
+
+				for(i = 0; i < fib.length - 2; i++){
+					ctx.fillRect(900 - (fib[i] / 2), 1800 - (fib[i] * 2.75), fib[i], fib[i]);
+				}
+
+
+				for(i = 0; i < fib.length - 2; i++){
+					ctx.fillRect(fib[i] * 2, 900 - (fib[i] / 2), fib[i], fib[i]);
+				}
+
+
+				for(i = 0; i < fib.length - 2; i++){
+					ctx.fillRect((1800 - fib[i]) - (fib[i] * 2), 900 - (fib[i] / 2), fib[i], fib[i]);
+				}
+
+
+				ctx.fillStyle = 'rgba(255,0,255,0.5)'
+
+
+				for(i = 0; i < fib.length - 1; i++){
+					ctx.fillRect(fib[i],  1800 - (fib[i] * 2), fib[i], fib[i]);
+				}
+
+				for(i = 0; i < fib.length - 1; i++){
+					ctx.fillRect(1800 - (fib[i] * 2),  1800 - (fib[i] * 2), fib[i], fib[i]);
+				}
+
+				ctx.clearRect(900 - (fib[13] / 2), 900 - (fib[13] / 3),fib[13],fib[13]);
+
+
+
+
+				/******************* */
+				// black square holes
+				for(i = 0; i < fib.length; i++){
+					ctx.clearRect(fib[i] - (fib[i] / 4), fib[i] - (fib[i] / 4), fib[i] / 4, fib[i] / 4);
+				}
+				// black square holes
+				for(i = 0; i < fib.length; i++){
+					ctx.clearRect((1800 - fib[i] / 4) - (fib[i] - (fib[i] / 4)), fib[i] - (fib[i] / 4), fib[i] / 4, fib[i] / 4);
+				}
+
+				// black square holes
+				for(i = 0; i < fib.length; i++){
+					ctx.clearRect(fib[i] - (fib[i] / 4), (1800 - fib[i] / 4) - (fib[i] - (fib[i] / 4)), fib[i] / 4, fib[i] / 4);
+				}
+
+				
+				// black square holes
+				for(i = 0; i < fib.length; i++){
+					ctx.clearRect((1800 - fib[i] / 4) - (fib[i] - (fib[i] / 4)), (1800 - fib[i] / 4) - (fib[i] - (fib[i] / 4)), fib[i] / 4, fib[i] / 4);
+				}
+
+				/******************* */
+
+
+
+				
+
+				ctx.fillStyle = 'rgba(0,255,255,0.5)'
+				ctx.fillRect(900 - (fib[12] / 2), 900 - (fib[12] / 4),fib[12],fib[12]);
+
+
+
+				ctx.fillStyle = 'rgba(255,255,255,0.7)'
+				ctx.fillRect(900 - (fib[11] / 2), 900 - (fib[11] / 6),fib[11],fib[11]);
+				ctx.clearRect(900 - (fib[10] / 2), 900 - (fib[10] / 21),fib[10],fib[10]);
+
+
+				ctx.fillStyle = 'rgba(255,0,255,0.8)'
+				ctx.fillRect(900 - (fib[9] / 2), 900 + 8,fib[9],fib[9]);
+				sets++;
+			}
+		}
+		</script>
+	</head>
+	<body onload="drawLayers()">
+
+		<canvas id="layer1" class="layer" width="1800" height="1800"></canvas>
+	</body>
+</html>
